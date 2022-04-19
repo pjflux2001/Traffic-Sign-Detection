@@ -37,21 +37,21 @@ im_eq = colorEnhance(im);
 %% Color Segmentation
 if k == 21
     hsv = rgb2hsv(im_eq);
-    im_th = hsv(:,:,1)>1/179&hsv(:,:,1)<10/179;
+    im_th = hsv(:,:,1)>75/179&hsv(:,:,1)<13/179;
 elseif k > 10
     % Red color detection
     im_th = hsiThreshR(im_eq);
     hsv = rgb2hsv(im);
-    im_th = hsv(:,:,1)>60/179&hsv(:,:,1)<130/179&im_th;
+    im_th = hsv(:,:,1)>75/179&hsv(:,:,1)<130/179&im_th;
 else
     
     
     % Yellow color detection
     % Hue values of basic colors
-    % Orange  0-22 - done
+    % Orange  0-22
     % Yellow 22- 38 - done
     % Green 38-75 - done
-    % Blue 75-130 - done
+    % Blue 75-130
     % Violet 130-160
     % Red 160-179 - done
 
