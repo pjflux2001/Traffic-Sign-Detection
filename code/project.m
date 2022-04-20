@@ -28,7 +28,7 @@ filename = {'stopAhead_1324866399.avi_image4.png';
 % choose image
 % yellow warning signs: k = 1-10
 % red stop signs: k = 11-20
-k = 21;
+k = 3;
 im = imread(filename{k});
 figure
 imshow(im)
@@ -83,7 +83,7 @@ for i = 1:n
     rectangle('Position',[xmin ymin xmax-xmin ymax-ymin],'EdgeColor','b')
     
     reg_rgb = im(ymin:ymax, xmin:xmax,:);
-    if k==21
+    if k==20
       figure
      imshow(reg_rgb)
     end
@@ -94,16 +94,16 @@ for i = 1:n
         continue
     end
 
-%     figure
-%     imshow(reg_edge)
+    figure
+    imshow(reg_edge)
     
     % Hough transform
     [H,theta,rho] = hough(reg_edge,'Theta',linspace(-90,89.9,500));
-%     figure
-%     imagesc(H, 'XData', theta, 'YData', rho);
-%     axis on, axis normal, hold on;
-%     colormap(hot), colorbar
-%     xlabel('\theta [deg]'); ylabel('\rho');
+    figure
+    imagesc(H, 'XData', theta, 'YData', rho);
+    axis on, axis normal, hold on;
+    colormap(hot), colorbar
+    xlabel('\theta [deg]'); ylabel('\rho');
     
     % Detect peaks in Hough transform
     peakNum = 50;
@@ -111,7 +111,7 @@ for i = 1:n
     lines = houghlines(im_bw, theta, rho, P, 'FillGap', 5, 'MinLength', 1);
     thetaPeaks = theta(P(:, 2));
     rhoPeaks = rho(P(:,1));
-%      plot(thetaPeaks, rhoPeaks, 'ys', 'LineWidth', 2,'markersize',10);
+     plot(thetaPeaks, rhoPeaks, 'ys', 'LineWidth', 2,'markersize',10);
     
     
     T = clusterdata(thetaPeaks',5);

@@ -4,7 +4,7 @@ close all;
 %% Image File Names
 % yellow : 1-10
 % red : 11-20
-% yellow : 21-30
+% white + yellow : 21-30
 % white + red : 31-40
 % green : 41-45
 % blue : 46-50
@@ -69,7 +69,7 @@ filenames = { % corresponding k / index values to choose file
 };
 
 %% Load image
-k = 49;
+k = 45;
 im = imread(strcat('img/',filenames{k}));
 figure
 imshow(im)
@@ -127,7 +127,7 @@ for i = 1:n
     reg_rgb = im(ymin:ymax, xmin:xmax,:);
 
     % multiple green signs
-    if k==41
+    if k==41 || k == 42 || k == 55 || k == 45
       figure
       imshow(reg_rgb)
     end
